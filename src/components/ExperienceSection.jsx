@@ -63,9 +63,39 @@ const TimelineItem = ({ item, isLeft }) => {
   const IconComponent = item.icon;
 
   return (
-    <div className="relative flex items-center">
+    <div className="relative flex md:items-center">
+      {/* Mobile: Single column layout */}
+      <div className="md:hidden w-full">
+        <div className={`bg-gray-800/50 backdrop-blur-lg rounded-3xl p-6 shadow-2xl ${colors.shadow} transition-all duration-300 w-full mb-8`}>
+          <div className="flex items-center mb-4">
+            <div className={`w-10 h-10 bg-gradient-to-r ${colors.gradient} rounded-full flex items-center justify-center mr-3`}>
+              <IconComponent className="w-5 h-5 text-gray-900" />
+            </div>
+            <div>
+              <h3 className={`text-lg font-bold ${colors.text}`}>
+                {item.position || item.degree}
+              </h3>
+              <p className="text-sm text-gray-300">{item.company || item.institution}</p>
+              <p className="text-xs text-gray-400">{item.duration || item.status}</p>
+            </div>
+          </div>
+          {item.achievements ? (
+            <ul className="space-y-1.5 text-sm text-gray-300">
+              {item.achievements.map((achievement, achIndex) => (
+                <li key={achIndex}>• {achievement}</li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-sm text-gray-300">{item.description}</p>
+          )}
+        </div>
+        {/* Timeline Dot for mobile */}
+        <div className={`absolute left-1/2 transform -translate-x-1/2 -bottom-4 w-5 h-5 bg-gradient-to-r ${colors.gradient} rounded-full border-4 border-gray-900 z-10`}></div>
+      </div>
+
+      
       {isLeft ? (
-        <div className="flex-1 pr-8">
+        <div className="hidden md:flex flex-1 pr-8">
           <div className={`bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl ${colors.shadow} transition-all duration-300 ml-auto max-w-lg`}>
             <div className="flex items-center mb-4">
               <div className={`w-12 h-12 bg-gradient-to-r ${colors.gradient} rounded-full flex items-center justify-center mr-4`}>
@@ -91,14 +121,14 @@ const TimelineItem = ({ item, isLeft }) => {
           </div>
         </div>
       ) : (
-        <div className="flex-1 pr-8"></div>
+        <div className="hidden md:flex flex-1 pr-8"></div>
       )}
       
-      {/* Timeline Dot */}
-      <div className={`absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r ${colors.gradient} rounded-full border-4 border-gray-900 z-10`}></div>
+      {/* Timeline Dot for desktop */}
+      <div className={`hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r ${colors.gradient} rounded-full border-4 border-gray-900 z-10`}></div>
       
       {!isLeft ? (
-        <div className="flex-1 pl-8">
+        <div className="hidden md:flex flex-1 pl-8">
           <div className={`bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl ${colors.shadow} transition-all duration-300 max-w-lg`}>
             <div className="flex items-center mb-4">
               <div className={`w-12 h-12 bg-gradient-to-r ${colors.gradient} rounded-full flex items-center justify-center mr-4`}>
@@ -124,7 +154,7 @@ const TimelineItem = ({ item, isLeft }) => {
           </div>
         </div>
       ) : (
-        <div className="flex-1 pl-8"></div>
+        <div className="hidden md:flex flex-1 pl-8"></div>
       )}
     </div>
   );
@@ -134,21 +164,21 @@ const ExperienceSection = () => {
   const allItems = [...experiences, ...education];
 
   return (
-    <section id="experience" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+    <section id="experience" className="relative py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
             Experience & Education
           </h2>
           <RunningLine/>
         </div>
 
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 to-blue-400 rounded-full"></div>
+          {/* Timeline Line - Hidden on mobile, visible on desktop */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 to-blue-400 rounded-full"></div>
 
           {/* Timeline Items */}
-          <div className="space-y-12">
+          <div className="space-y-16 md:space-y-12">
             {allItems.map((item, index) => (
               <TimelineItem 
                 key={index} 

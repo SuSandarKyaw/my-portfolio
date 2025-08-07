@@ -1,23 +1,27 @@
 import { Code, Palette, Server } from "lucide-react";
+import { motion, useInView } from "framer-motion";
 import RunningLine from "./RunningLine";
+import { useRef } from "react";
 
 const frontendSkills = [
   { name: "React.js", level: 90 },
-  { name: "Next.js", level: 85 },
   { name: "JavaScript (ES6+)", level: 88 },
+  { name: "Next.js", level: 80 },
   { name: "HTML5 & CSS3", level: 92 }
 ];
 
 const stylingSkills = [
   { name: "TailwindCSS", level: 90 },
+  { name: "Bootstrap", level: 88 },
+  { name: "Shadcn UI", level: 75 },
   { name: "Zustand", level: 85 },
   { name: "Git & GitHub", level: 88 },
   { name: "Figma", level: 80 }
 ];
 
 const backendSkills = [
-  { name: "Node.js", level: 45 },
   { name: "PHP", level: 50 },
+  { name: "Node.js", level: 45 },
   { name: "Docker", level: 35 },
   { name: "Vercel", level: 85 }
 ];
@@ -35,30 +39,74 @@ const SkillBar = ({ skill, color }) => {
         <span className="text-gray-300">{skill.name}</span>
         <span className={`text-${color}-400`}>{skill.level}%</span>
       </div>
-      <div className="w-full bg-gray-700 rounded-full h-2">
-        <div 
-          className={`h-2 rounded-full bg-gradient-to-r ${gradientColors[color]} transition-all duration-1000 ease-out`}
-          style={{ width: `${skill.level}%` }}
-        ></div>
+      <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${skill.level}%` }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className={`h-2 rounded-full bg-gradient-to-r ${gradientColors[color]}`}
+        />
       </div>
     </div>
   );
 };
 
 const SkillsSection = () => {
-  return (
-    <section id="skills" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-            Skills & Technologies
-          </h2>
-         <RunningLine/>
-        </div>
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5 }
+    }
+  };
+
+  return (
+    <section 
+      id="skills" 
+      className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-900"
+      ref={ref}
+    >
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="text-center mb-16"
+        >
+          <motion.h2 
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
+          >
+            Skills & Technologies
+          </motion.h2>
+          <RunningLine/>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {/* Frontend Skills */}
-          <div className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-[1.02]">
+          <motion.div 
+            variants={itemVariants}
+            className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-[1.02]"
+          >
             <div className="flex items-center mb-6">
               <Code className="w-8 h-8 text-cyan-400 mr-4" />
               <h3 className="text-xl font-bold text-gray-200">Frontend</h3>
@@ -68,10 +116,13 @@ const SkillsSection = () => {
                 <SkillBar key={index} skill={skill} color="cyan" />
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Styling & Tools */}
-          <div className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:scale-[1.02]">
+          <motion.div 
+            variants={itemVariants}
+            className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:scale-[1.02]"
+          >
             <div className="flex items-center mb-6">
               <Palette className="w-8 h-8 text-purple-400 mr-4" />
               <h3 className="text-xl font-bold text-gray-200">Styling & Tools</h3>
@@ -81,10 +132,13 @@ const SkillsSection = () => {
                 <SkillBar key={index} skill={skill} color="purple" />
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Backend & Others */}
-          <div className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-green-500/20 transition-all duration-300 hover:scale-[1.02]">
+          <motion.div 
+            variants={itemVariants}
+            className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-green-500/20 transition-all duration-300 hover:scale-[1.02]"
+          >
             <div className="flex items-center mb-6">
               <Server className="w-8 h-8 text-green-400 mr-4" />
               <h3 className="text-xl font-bold text-gray-200">Backend & Others</h3>
@@ -94,8 +148,8 @@ const SkillsSection = () => {
                 <SkillBar key={index} skill={skill} color="green" />
               ))}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
