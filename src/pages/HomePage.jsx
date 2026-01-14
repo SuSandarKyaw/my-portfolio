@@ -11,7 +11,6 @@ import Footer from '../components/Footer'
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 font-inter overflow-x-hidden font-poppins">
-      {/* Background Animation */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
         <div className="absolute top-0 left-0 w-full h-full opacity-30">

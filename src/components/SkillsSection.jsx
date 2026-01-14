@@ -5,32 +5,33 @@ import { useRef } from "react";
 
 const frontendSkills = [
   { name: "React.js", level: 90 },
-  { name: "JavaScript (ES6+)", level: 88 },
   { name: "Next.js", level: 80 },
+  { name: "JavaScript (ES6+)", level: 88 },
+  { name: "Zustand", level: 85 },
   { name: "HTML5 & CSS3", level: 92 }
 ];
 
-const stylingSkills = [
+const designSkills = [
   { name: "TailwindCSS", level: 90 },
   { name: "Bootstrap", level: 88 },
   { name: "Shadcn UI", level: 75 },
-  { name: "Zustand", level: 85 },
-  { name: "Git & GitHub", level: 88 },
   { name: "Figma", level: 80 }
 ];
 
-const backendSkills = [
-  { name: "PHP", level: 50 },
-  { name: "Node.js", level: 45 },
+const backendDevOpsSkills = [
+  { name: "PHP / Laravel", level: 50 }, 
+  { name: "C#/.NET", level: 35 },
+  { name: "MSSQL", level: 30 },
+  { name: "Vercel / Coolify", level: 80 }, 
   { name: "Docker", level: 35 },
-  { name: "Vercel", level: 85 }
+  { name: "SharePoint / Power Apps", level: 60 }
 ];
 
 const SkillBar = ({ skill, color }) => {
   const gradientColors = {
     cyan: 'from-cyan-400 to-blue-400',
     purple: 'from-purple-400 to-pink-400',
-    green: 'from-green-400 to-emerald-400'
+    green: 'from-green-400 to-emerald-400',
   };
 
   return (
@@ -102,7 +103,6 @@ const SkillsSection = () => {
           variants={containerVariants}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {/* Frontend Skills */}
           <motion.div 
             variants={itemVariants}
             className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-[1.02]"
@@ -118,7 +118,6 @@ const SkillsSection = () => {
             </div>
           </motion.div>
 
-          {/* Styling & Tools */}
           <motion.div 
             variants={itemVariants}
             className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:scale-[1.02]"
@@ -128,13 +127,12 @@ const SkillsSection = () => {
               <h3 className="text-xl font-bold text-gray-200">Styling & Tools</h3>
             </div>
             <div className="space-y-6">
-              {stylingSkills.map((skill, index) => (
+              {designSkills.map((skill, index) => (
                 <SkillBar key={index} skill={skill} color="purple" />
               ))}
             </div>
           </motion.div>
 
-          {/* Backend & Others */}
           <motion.div 
             variants={itemVariants}
             className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-green-500/20 transition-all duration-300 hover:scale-[1.02]"
@@ -144,7 +142,7 @@ const SkillsSection = () => {
               <h3 className="text-xl font-bold text-gray-200">Backend & Others</h3>
             </div>
             <div className="space-y-6">
-              {backendSkills.map((skill, index) => (
+              {backendDevOpsSkills.map((skill, index) => (
                 <SkillBar key={index} skill={skill} color="green" />
               ))}
             </div>

@@ -4,7 +4,7 @@ const RunningLine = () => {
   return (
       <motion.div
       className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full"
-      initial={{ scaleX: 0 }} // No originX → scales from center
+      initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       transition={{
         repeat: Infinity,

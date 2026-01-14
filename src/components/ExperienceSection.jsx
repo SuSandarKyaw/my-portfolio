@@ -4,6 +4,21 @@ import RunningLine from "./RunningLine";
 const experiences = [
   {
     type: "work",
+    position: "Junior Frontend Developer",
+    company: "NiT College – Yangon",
+    duration: "July 2025 – Present",
+    achievements: [
+      "Successfully transitioned from Intern to Junior Developer role",
+      "Developed the official college website using React.js and Tailwind CSS",
+      "Integrated frontend UI with PHP and MySQL for dynamic course management",
+      "Optimized website performance and SEO for better institutional reach",
+      "Collaborated on student registration and academic dashboard modules"
+    ],
+    icon: Briefcase,
+    color: "blue" // Using blue to match your project theme
+  },
+  {
+    type: "work",
     position: "Frontend Developer Intern",
     company: "MMS Connection – Remote",
     duration: "May 2025 – Present",
@@ -24,7 +39,7 @@ const education = [
     type: "education",
     degree: "B.Sc (Hons) Computing",
     institution: "University of Greenwich",
-    status: "Final Year Student",
+    status: "2024-2025",
     description: "Specializing in Computing and Information Systems at KMD Institute, Myanmar Campus. Focus on modern web development technologies and software engineering principles.",
     icon: GraduationCap,
     color: "purple"
@@ -47,6 +62,11 @@ const TimelineItem = ({ item, isLeft }) => {
       text: "text-cyan-400",
       shadow: "hover:shadow-cyan-500/20"
     },
+    blue: {
+      gradient: "from-blue-400 to-indigo-400",
+      text: "text-blue-400",
+      shadow: "hover:shadow-blue-500/20"
+    },
     purple: {
       gradient: "from-purple-400 to-pink-400",
       text: "text-purple-400",
@@ -64,7 +84,6 @@ const TimelineItem = ({ item, isLeft }) => {
 
   return (
     <div className="relative flex md:items-center">
-      {/* Mobile: Single column layout */}
       <div className="md:hidden w-full">
         <div className={`bg-gray-800/50 backdrop-blur-lg rounded-3xl p-6 shadow-2xl ${colors.shadow} transition-all duration-300 w-full mb-8`}>
           <div className="flex items-center mb-4">
@@ -89,11 +108,9 @@ const TimelineItem = ({ item, isLeft }) => {
             <p className="text-sm text-gray-300">{item.description}</p>
           )}
         </div>
-        {/* Timeline Dot for mobile */}
         <div className={`absolute left-1/2 transform -translate-x-1/2 -bottom-4 w-5 h-5 bg-gradient-to-r ${colors.gradient} rounded-full border-4 border-gray-900 z-10`}></div>
       </div>
 
-      
       {isLeft ? (
         <div className="hidden md:flex flex-1 pr-8">
           <div className={`bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl ${colors.shadow} transition-all duration-300 ml-auto max-w-lg`}>
@@ -124,7 +141,6 @@ const TimelineItem = ({ item, isLeft }) => {
         <div className="hidden md:flex flex-1 pr-8"></div>
       )}
       
-      {/* Timeline Dot for desktop */}
       <div className={`hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r ${colors.gradient} rounded-full border-4 border-gray-900 z-10`}></div>
       
       {!isLeft ? (
@@ -174,10 +190,8 @@ const ExperienceSection = () => {
         </div>
 
         <div className="relative">
-          {/* Timeline Line - Hidden on mobile, visible on desktop */}
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 to-blue-400 rounded-full"></div>
 
-          {/* Timeline Items */}
           <div className="space-y-16 md:space-y-12">
             {allItems.map((item, index) => (
               <TimelineItem 
