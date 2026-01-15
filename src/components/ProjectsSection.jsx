@@ -72,7 +72,8 @@ const ProjectCard = ({ project }) => {
       text: "text-cyan-400",
       border: "border-cyan-500/30",
       bg: "bg-cyan-500/20",
-      gradient: "from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400",
+      gradient:
+        "from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400",
       button: "border-cyan-400 text-cyan-400 hover:bg-cyan-400",
       shadow: "hover:shadow-cyan-500/20",
     },
@@ -80,7 +81,8 @@ const ProjectCard = ({ project }) => {
       text: "text-purple-400",
       border: "border-purple-500/30",
       bg: "bg-purple-500/20",
-      gradient: "from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400",
+      gradient:
+        "from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400",
       button: "border-purple-400 text-purple-400 hover:bg-purple-400",
       shadow: "hover:shadow-purple-500/20",
     },
@@ -88,7 +90,8 @@ const ProjectCard = ({ project }) => {
       text: "text-green-400",
       border: "border-green-500/30",
       bg: "bg-green-500/20",
-      gradient: "from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400",
+      gradient:
+        "from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400",
       button: "border-green-400 text-green-400 hover:bg-green-400",
       shadow: "hover:shadow-green-500/20",
     },
@@ -96,7 +99,8 @@ const ProjectCard = ({ project }) => {
       text: "text-blue-400",
       border: "border-blue-500/30",
       bg: "bg-blue-500/20",
-      gradient: "from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400",
+      gradient:
+        "from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400",
       button: "border-blue-400 text-blue-400 hover:bg-blue-400",
       shadow: "hover:shadow-blue-500/20",
     },
@@ -193,19 +197,23 @@ const ProjectCard = ({ project }) => {
             rel="noopener noreferrer"
             className={`flex-1 py-2 bg-gradient-to-r ${
               primaryStyle.gradient
-            } text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-center flex items-center justify-center ${!project.liveUrl && 'opacity-50 cursor-not-allowed'}`}
+            } text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-center flex items-center justify-center ${
+              !project.liveUrl && "opacity-50 cursor-not-allowed"
+            }`}
           >
             <ExternalLink className="w-4 h-4 mr-2" />
             View Project
           </a>
-          
+
           <a
             href={project.githubUrl || "#"}
             target={project.githubUrl ? "_blank" : "_self"}
             rel="noopener noreferrer"
             className={`px-4 py-2 border rounded-lg transition-all duration-300 hover:bg-white hover:text-gray-900 ${
               primaryStyle.button
-            } flex items-center justify-center ${!project.githubUrl && 'opacity-50 cursor-not-allowed'}`}
+            } flex items-center justify-center ${
+              !project.githubUrl && "opacity-50 cursor-not-allowed"
+            }`}
           >
             <Github className="w-4 h-4" />
           </a>

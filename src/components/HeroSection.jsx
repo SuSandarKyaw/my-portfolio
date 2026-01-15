@@ -75,7 +75,7 @@ const HeroSection = () => {
               </span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
-              Final year B.Sc Computing student passionate about creating beautiful, responsive web applications with React.js, Next.js, and modern technologies.
+              B.Sc (Hons) Computing Graduate passionate about creating beautiful, responsive web applications with React.js, Next.js, and modern technologies.
             </p>
           </div>
 
@@ -116,6 +116,7 @@ const HeroSection = () => {
             </a>
             <a 
               href="mailto:loeysu123@gmail.com"
+              target="_blank" 
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 hover:scale-110"
               aria-label="Email"
             >

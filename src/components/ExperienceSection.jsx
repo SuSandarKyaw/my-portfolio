@@ -1,4 +1,4 @@
-import { Briefcase, GraduationCap, Building } from "lucide-react";
+import { Briefcase, GraduationCap, Building, Code } from "lucide-react";
 import RunningLine from "./RunningLine";
 
 const experiences = [
@@ -14,14 +14,14 @@ const experiences = [
       "Optimized website performance and SEO for better institutional reach",
       "Collaborated on student registration and academic dashboard modules"
     ],
-    icon: Briefcase,
-    color: "blue" // Using blue to match your project theme
+    icon: Code,
+    color: "blue"
   },
   {
     type: "work",
     position: "Frontend Developer Intern",
     company: "MMS Connection – Remote",
-    duration: "May 2025 – Present",
+    duration: "May 2025 – August 2025",
     achievements: [
       "Developed real-world Admin Dashboard for travel business using Next.js",
       "Built responsive UI components using ShadCN/UI",
